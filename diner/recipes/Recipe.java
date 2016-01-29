@@ -1,5 +1,6 @@
-package diner.recipes; // Аз си го представях, че всички рецепти са в един Мап и ключа им е продуктите, а валюто им е самата рецепта. 
-                       // И понеже ние ще ги въвеждаме на ръка предварително, има ли нужда от такива методи? Така за всяка рецепта ще създаваме нов обект.
+package diner.recipes; // // In this case we will create a new object for every single recepie, wouldn't it be better if we put all of the
+                       // recepies in some kind of a Map and set the ID of the map to be a String with the products of the recepie and the value of the map
+                       //a String with the recepie itself
                     
 
 import java.util.TreeMap;
