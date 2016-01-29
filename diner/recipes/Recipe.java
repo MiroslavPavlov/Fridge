@@ -1,4 +1,6 @@
-package diner.recipes;
+package diner.recipes; // Аз си го представях, че всички рецепти са в един Мап и ключа им е продуктите, а валюто им е самата рецепта. 
+                       // И понеже ние ще ги въвеждаме на ръка предварително, има ли нужда от такива методи? Така за всяка рецепта ще създаваме нов обект.
+                    
 
 import java.util.TreeMap;
 
@@ -16,7 +18,7 @@ public class Recipe {
 		this.id = uniqueID ++;
 		this.receipe = new TreeMap<String, Double>();
 	}
-	static Recipe createRecipe(String[] ingredients , double[] amount, String name){
+	static Recipe createRecipe(String[] ingredients , double[] amount, String name){ // didn't we decided that we should add the amound later?
 		if(ingredients.length == amount.length){
 			Recipe r = new Recipe(name);
 			for(int i = 0 ; i < ingredients.length ; i ++){
