@@ -29,7 +29,7 @@ public abstract class ProductKeeper {
 		
 		
 	}
-	public void removeProduct(){ // removes a product from fridge
+	public void removeProduct(){ // removes a product from keeper
 		Scanner sc= new Scanner(System.in);
 		String product= sc.nextLine();
 		if(userProducts.contains(product)){
