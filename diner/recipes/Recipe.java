@@ -1,7 +1,4 @@
-package diner.recipes; // // In this case we will create a new object for every single recepie, wouldn't it be better if we put all of the
-                       // recepies in some kind of a Map and set the ID of the map to be a String with the products of the recepie and the value of the map
-                       //a String with the recepie itself
-                    
+package diner.recipes;
 
 import java.util.TreeMap;
 
@@ -10,16 +7,22 @@ public class Recipe {
 	private static int uniqueID = 1;
 	
 	private String name;
-	private int id;
+	private Integer id;
 	private TreeMap<String, Double> receipe;
 	
 	
+	public Integer getId() {
+		return id;
+	}
+	public TreeMap<String, Double> getReceipe() {
+		return receipe;
+	}
 	private Recipe(String name) {
 		this.name = name;
 		this.id = uniqueID ++;
 		this.receipe = new TreeMap<String, Double>();
 	}
-	static Recipe createRecipe(String[] ingredients , double[] amount, String name){ // didn't we decided that we should add the amound later?
+	static Recipe createRecipe(String[] ingredients , double[] amount, String name){
 		if(ingredients.length == amount.length){
 			Recipe r = new Recipe(name);
 			for(int i = 0 ; i < ingredients.length ; i ++){
@@ -30,5 +33,29 @@ public class Recipe {
 		System.out.println("invalit list with ingrediants!");
 		return null;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Recipe other = (Recipe) obj;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+	
 	
 }

@@ -4,7 +4,11 @@ import java.util.HashSet;
 
 public class Book {
 
-	HashSet<Recipe> recipesBook;
+private  HashSet<Recipe> recipesBook;
+
+	public HashSet<Recipe> getRecipesBook() {
+	return recipesBook;
+}
 
 	public Book() {
 		this.recipesBook = new HashSet<Recipe>();
