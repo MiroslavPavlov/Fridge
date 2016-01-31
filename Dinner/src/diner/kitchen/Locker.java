@@ -1,5 +1,6 @@
 package diner.kitchen;
 
+import java.util.Map;
 import java.util.TreeMap;
 
 //sure about the name though? 
@@ -18,7 +19,33 @@ public class Locker extends ProductKeeper {
 	public void closeKeeper() {
 		System.out.println("Locker is closed! ");
 	}
-
+	/**
+	 * Returns an array of all the products that have bin added to the locker
+	 * writing down only their String Names
+	 */
+	public String[] ingredientsStringsToArray(){
+		String[] temp=new String[this.ingredients.size()];
+		int i=0;
+		for(Map.Entry<String, Double> entry : this.ingredients.entrySet()){
+			temp[i]=entry.getKey();
+			i++;
+		}
+		return temp;
+	}
+	/**
+	 * Returns an array of the values of all the products that have bin added
+	 * to the locker
+	 */
+	public double[] ingredientsValuesToArray(){
+		double[] temp=new double[this.ingredients.size()];
+		int i=0;
+		for(Map.Entry<String, Double> entry : this.ingredients.entrySet()){
+			temp[i]=entry.getValue();
+			i++;
+		}
+		return temp;
+	}
+	
 	/**
 	 * Adds a general product into the refrigerator, if the product already
 	 * exists the new amount will be added to the old one, uses String argument
@@ -64,7 +91,7 @@ public class Locker extends ProductKeeper {
 	public void removeOil(double number) {
 		double temp = this.ingredients.remove("Oil");
 		this.ingredients.put("Oil", temp - number);
-
+		
 	}
 
 	/**
