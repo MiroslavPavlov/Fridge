@@ -1,6 +1,7 @@
 package com.example.panche.kitchenapp;
 
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -44,7 +45,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        SQLiteDatabase db = this.getWritableDatabase();
     }
 
     public static DatabaseHelper getInstance(Context context){
@@ -60,9 +60,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_PRODUCT_TABLE);
     }
 
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //TO DO
 
     }
+
+//    insert data to database methods
+
+    public boolean addingDataInRecipesTable(Integer id, String text){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(RECIPES_ID, id);
+        contentValues.put(RECIPES_TEXT, text);
+        long result = db.insert(RECIPES_TABLE, null, contentValues);
+        if(result == -1)
+            return false;
+        return true;
+    }
+
+    public boolean addingDataInProductTable(Integer id, String name, Double quantity){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(PRODUCT_ID, id);
+        contentValues.put(PRODUCT_NAME, name);
+        contentValues.put(PRODUCT_QUANTITY, quantity);
+        long result = db.insert(PRODUCT_TABLE, null, contentValues);
+        if(result == -1)
+            return false;
+        return true;
+    }
+
+
 }
